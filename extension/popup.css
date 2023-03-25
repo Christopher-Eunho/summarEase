@@ -1,0 +1,23 @@
+.popup {
+    width: 300px;
+    border-radius: 17px;
+    padding-right:30px;
+    padding-left:30px;
+    padding-top:20px;
+    padding-bottom:20px;
+}
+
+.col {
+    width: 33%;
+    font-size: xx-large;
+    text-align: center;
+    margin: 1%;
+    border-radius: 17px;
+    vertical-align: middle;
+    line-height: 50px;
+    background-color: #000;
+}
+
+.bg-success {
+    background-color: #000;
+}
