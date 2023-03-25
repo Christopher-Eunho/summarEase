@@ -69,9 +69,9 @@ export const updateKeyword = async (request, response) => {
     try {
         const summary = await Summary.findById(request.params.id);
         if (!summary.keywords.includes(newKeyword)) {
-            await summary.updateOne({ $push: { keywords: newKeyword }});
+            await summary.updateOne({$push: { keywords: newKeyword } });
         } else {
-            summary.updateOne({ $pull: { tags: newKeyword } });
+            await summary.updateOne({ $pull: { keywords: newKeyword } });
         }
         return response.status(200).json(summary);
     } catch (error) {

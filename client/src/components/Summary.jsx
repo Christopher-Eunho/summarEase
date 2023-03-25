@@ -7,12 +7,14 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Link from '@mui/material/Link';
 import ChipsArray from '../components/ChipsArray';
 import BasicModal from "./BasicModal";
+import './Summary.css'
 
 import { useState } from "react";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import { deleteSummary } from '../redux/actions';
 
-const Summary = ({summary}) => {
-    // const dispatch = useDispatch();
+const Summary = ({ summary }) => {
+    const dispatch = useDispatch();
 
     const [expanded, setExpanded] = React.useState(false);
 
@@ -28,7 +30,7 @@ const Summary = ({summary}) => {
 
   return (
     <React.Fragment>
-        <li>
+        <li className='listItem'>
             <Accordion className='Accordion' expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
@@ -40,26 +42,28 @@ const Summary = ({summary}) => {
                         sx={{ width: '33%', flexShrink: 0 }}
                         className="Typography"
                     >
-                        {/* {summary?.title} */}
-                        title
+                        {summary?.title}
+                        {/* {summary.keywords}
+                        {summary._id} */}
+                        {/* title */}
                     </Typography>
-                    {/* <ChipsArray  data={summary.keywords} id={summary._id}/> */}
-                    <ChipsArray />
+                    <ChipsArray  data={summary.keywords} id={summary._id}/>
+                    {/* <ChipsArray /> */}
                 </AccordionSummary>
                 <AccordionDetails>
-                    {/* <Link href={summary?.url}>Link</Link> */}
-                    <Link href="#">Link</Link>
+                    <Link href={summary?.url}>Link</Link>
+                    {/* <Link href="#">Link</Link> */}
                     <Typography>
-                        {/* {summary?.text} */}
-                        text
+                        {summary?.text}
+                        {/* text */}
                     </Typography>
                         <span className="icon" onClick={showModalHandler}>
                             <i className="fas fa-pen" />
                         </span>
-                        {/* {showModal ? <BasicModal open={showModal} id={summary._id} title={summary.title} text={summary.text} />: null } */}
-                        {showModal ? <BasicModal open={showModal} />: null }
-                        {/* <span className="icon" onClick={() => dispatch(deleteTodo(summary._id))}> */}
-                        <span className="icon">
+                        {showModal ? <BasicModal open={showModal} id={summary._id} title={summary.title} text={summary.text} />: null }
+                        {/* {showModal ? <BasicModal open={showModal} />: null } */}
+                        <span className="icon" onClick={() => dispatch(deleteSummary(summary._id))}>
+                        {/* <span className="icon"> */}
                             <i className="fas fa-trash" />
                         </span>
                 </AccordionDetails>

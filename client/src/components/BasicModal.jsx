@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import { useDispatch } from "react-redux";
+import { updateSummary } from '../redux/actions';
 
 const style = {
     position: 'absolute',
@@ -17,16 +18,21 @@ const style = {
     p: 4,
 };
 
-const BasicModal = ({open}) => {
+export default function BasicModal ({ open, id, title, text }) {
+    const dispatch = useDispatch();
     const [isopen, setOpen] = React.useState(open);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const [newTitle, setNewTitle] = useState('');
-    const [newText, setNewText] = useState('');
+    // const [, updateState] = React.useState();
+    // const forceUpdate = React.useCallback(() => updateState({}), []);
+
+    const [newTitle, setNewTitle] = useState(title);
+    const [newText, setNewText] = useState(text);
     const handleSubmit = (newTitle, newText) => () => {
         setOpen(false);
-        // dispatch(updateTodo(id, newTitle, newText));
+        dispatch(updateSummary(id, newTitle, newText));
+        window.location.reload(false);
         // forceUpdate();
       };
 
@@ -41,33 +47,33 @@ const BasicModal = ({open}) => {
             <Box sx={style}>
                 <div>
                     <TextField
-                        id="standard-helperText"
+                        id="standard-basic"
                         label="Title"
-                        // defaultValue={itemTitle}
-                        defaultValue="default"
+                        value={newTitle}
+                        // defaultValue="default"
                         variant="standard"
                         onChange={(event) => {setNewTitle(event.target.value)}} 
                     />
                 </div>
                 <div>
                 <TextField
-                    id="standard-multiline-static"
+                    id="standard-multiline-flexible"
                     label="Summary"
                     multiline
                     rows={5}
-                    // defaultValue={itemText}
-                    defaultValue="default"
+                    value={newText}
+                    // defaultValue="default"
                     variant="standard"
                     onChange={(event) => {setNewText(event.target.value)}} 
                 />
                 </div>
-                {/* <Button variant="outlined" onClick={handleSubmit(newTitle, newText)}>submit</Button> */}
-                <Button variant="outlined">submit</Button>
+                <Button variant="outlined" onClick={handleSubmit(newTitle, newText)}>submit</Button>
+                {/* <Button variant="outlined">submit</Button> */}
             </Box>
         </Modal>
     </div>
   )
 }
 
-export default BasicModal;
+// export default BasicModal;
 

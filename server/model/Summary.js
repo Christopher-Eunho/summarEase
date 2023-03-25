@@ -23,6 +23,6 @@ const SummarySchema = new mongoose.Schema({
     }
 })
 
-const summary = mongoose.model('todo', SummarySchema);
+const summary = mongoose.model('summaries', SummarySchema);
 
 export default summary;
