@@ -5,9 +5,8 @@ SummarEase summarizes and extracts keywords from websites of your choice using C
 
 As Backend Lead of the team I 
 - Developed the Chrome extension part of the app
-- Set up OpenAI API and wrote logic to communicate with the API
-- Set up backend server to parse and deliver summary data to client side
-
+- Configured OpenAI API and wrote logic to communicate with the API
+- Set up the backend server and implemented the backend logic to parse and deliver summary data to the client side.
 
 ### Demo
 https://user-images.githubusercontent.com/99078453/235422448-fac9410b-e72b-4dcc-8741-78b3d851d48e.mp4
